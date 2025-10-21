@@ -72,30 +72,27 @@ class BackstagePassStrategy(ItemUpdateStrategy):
 class SulfurasStrategy(ItemUpdateStrategy):
     
     def _update_quality(self, item):
-        pass
+        pass  # Quality never changes
     
     def _update_sell_in(self, item):
-        pass
+        pass  # sell_in never changes
     
     def _update_quality_after_sell_date(self, item):
-        pass
+        pass  # No change after expiration
 
 
 class GildedRose(object):
 
     def __init__(self, items):
         self.items = items
-        self.strategies = self._initialize_strategies()
     
-    def _initialize_strategies(self):
-        return {
+    def _get_strategy(self, item):
+        strategies = {
             "Aged Brie": AgedBrieStrategy(),
             "Backstage passes to a TAFKAL80ETC concert": BackstagePassStrategy(),
             "Sulfuras, Hand of Ragnaros": SulfurasStrategy(),
         }
-    
-    def _get_strategy(self, item):
-        return self.strategies.get(item.name, NormalItemStrategy())
+        return strategies.get(item.name, NormalItemStrategy())
 
     def update_quality(self):
         for item in self.items:
