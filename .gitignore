@@ -1,11 +1,24 @@
-bin
-obj
-*.sln.DotSettings.user
-.vs
-vendor
-.idea
-*.iml
-**/*.received.*
-venv
-**/DS_Store/*
-**/.DS_Store/*
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test files
+*.received.txt
+
+# OS
+.DS_Store
+Thumbs.db
